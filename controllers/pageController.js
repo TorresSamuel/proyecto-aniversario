@@ -224,6 +224,72 @@ window.PageController = (() => {
     });
   }
 
+  function renderArchiveList(list, items, emptyText) {
+    list.replaceChildren();
+    if (!items.length) {
+      const empty = document.createElement("p");
+      empty.className = "memory-empty";
+      empty.textContent = emptyText;
+      list.append(empty);
+      return;
+    }
+    items.forEach((item) => {
+      const entry = document.createElement("article");
+      entry.className = "archive-entry";
+      if (item.image) {
+        const image = document.createElement("img");
+        image.src = item.image;
+        image.alt = "Recuerdo guardado del evento";
+        entry.append(image);
+      }
+      const title = document.createElement("h3");
+      title.textContent = item.title;
+      const body = document.createElement("p");
+      body.textContent = item.body;
+      entry.append(title, body);
+      list.append(entry);
+    });
+  }
+
+  function bindArchives() {
+    const model = window.AnniversaryModel;
+    document.querySelectorAll("[data-modal]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const modal = $(`#${button.dataset.modal}`);
+        if (!modal) return;
+        if (button.dataset.modal === "letters-modal") {
+          const letters = [{ title: model.letters.first.title, body: model.letters.first.paragraphs.join("\n\n") }];
+          try {
+            const saved = JSON.parse(localStorage.getItem(letterKey));
+            if (saved?.title && saved?.body) letters.push({ title: saved.title, body: saved.body });
+          } catch { /* carta aún no guardada */ }
+          renderArchiveList($("#letters-archive"), letters, "Todavía no hay cartas guardadas.");
+        }
+        if (button.dataset.modal === "future-modal") {
+          const future = getMemories().map((memory) => ({ title: memory.date, body: memory.text }));
+          renderArchiveList($("#future-archive"), future, "Aquí aparecerán las cosas que quieran vivir en el futuro.");
+        }
+        if (button.dataset.modal === "memories-modal") {
+          const memories = [];
+          try {
+            const saved = JSON.parse(localStorage.getItem(photoKey));
+            if (saved?.image && saved?.description) memories.push({ title: "Recuerdo del evento", body: saved.description, image: saved.image });
+          } catch { /* foto aún no guardada */ }
+          renderArchiveList($("#memories-archive"), memories, "Aquí aparecerán sus fotos y descripciones.");
+        }
+        modal.showModal();
+      });
+    });
+    document.querySelectorAll("[data-close-modal]").forEach((button) => {
+      button.addEventListener("click", () => button.closest("dialog")?.close());
+    });
+    document.querySelectorAll("dialog").forEach((modal) => {
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) modal.close();
+      });
+    });
+  }
+
   function init() {
     fillText();
     bindNavigation();
@@ -232,6 +298,7 @@ window.PageController = (() => {
     bindTicketReference();
     bindSecondLetter();
     bindPhotoMemory();
+    bindArchives();
   }
   return { init, goTo };
 })();

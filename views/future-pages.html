@@ -51,7 +51,28 @@
 					<figcaption></figcaption>
 				</figure>
 			</section>
+			<section class="archive-actions" aria-labelledby="archive-title">
+				<p class="eyebrow">nuestro archivo</p>
+				<h2 id="archive-title">Todo lo que vamos guardando</h2>
+				<div class="archive-buttons">
+					<button class="button button--ink" type="button" data-modal="letters-modal">Cartas</button>
+					<button class="button button--soft" type="button" data-modal="future-modal">Futuro</button>
+					<button class="button button--ink" type="button" data-modal="memories-modal">Recuerdos</button>
+				</div>
+			</section>
 		</main>
+		<dialog id="letters-modal" class="archive-modal">
+			<div class="archive-modal__head"><h2>Cartas</h2><button class="modal-close" type="button" data-close-modal aria-label="Cerrar">×</button></div>
+			<div id="letters-archive" class="archive-list"></div>
+		</dialog>
+		<dialog id="future-modal" class="archive-modal">
+			<div class="archive-modal__head"><h2>Futuro</h2><button class="modal-close" type="button" data-close-modal aria-label="Cerrar">×</button></div>
+			<div id="future-archive" class="archive-list"></div>
+		</dialog>
+		<dialog id="memories-modal" class="archive-modal">
+			<div class="archive-modal__head"><h2>Recuerdos</h2><button class="modal-close" type="button" data-close-modal aria-label="Cerrar">×</button></div>
+			<div id="memories-archive" class="archive-list"></div>
+		</dialog>
 		<script src="../models/anniversaryModel.js"></script>
 		<script src="../controllers/pageController.js"></script>
 		<script src="../public/js/app.js"></script>
