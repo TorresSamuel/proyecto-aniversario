@@ -109,11 +109,29 @@ window.PageController = (() => {
     });
   }
 
+  function bindTicketReference() {
+    const ticketStack = $(".ticket-stack");
+    if (!ticketStack || ticketStack.querySelector(".ticket-reference")) return;
+    const image = document.createElement("img");
+    image.className = "ticket-reference";
+    image.src = "../public/images/entradas-alvaro-diaz.jpeg";
+    image.alt = "Entradas para el concierto de Álvaro Díaz";
+    image.style.width = "min(100%, 760px)";
+    image.style.height = "auto";
+    image.style.display = "block";
+    image.style.objectFit = "contain";
+    image.style.margin = "0 auto 32px";
+    image.style.border = "1px solid #ff9bd766";
+    image.style.boxShadow = "10px 10px 0 #5d163c";
+    ticketStack.prepend(image);
+  }
+
   function init() {
     fillText();
     bindNavigation();
     bindBook();
     bindMemories();
+    bindTicketReference();
   }
   return { init, goTo };
 })();
