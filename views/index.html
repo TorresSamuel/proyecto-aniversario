@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5e8e7">
+    <title>Nuestros 9 meses</title>
+    <link rel="stylesheet" href="../public/css/style-subtle.css">
+  </head>
+  <body class="subtle-page">
+    <main class="subtle-shell">
+      <section class="hero" aria-labelledby="main-title">
+        <p class="eyebrow">un pequeño capítulo para ti</p>
+        <h1 id="main-title" data-model="couple.headline" data-split-title="juntos"><span>Felices 9 meses</span><span>juntos</span></h1>
+        <p class="hero__copy">Nueve meses de una historia que quiero seguir eligiendo cada día.</p>
+        <button id="open-book" class="button button--soft" aria-controls="love-book" aria-expanded="false">Abre nuestra primera carta</button>
+      </section>
+
+      <section id="love-book" class="book" aria-label="Primera carta de amor">
+        <div class="book__spine" aria-hidden="true"></div>
+        <div class="book__page book__page--left">
+          <span class="page-number">09</span>
+          <img class="book__photo" src="../public/images/nuestro-recuerdo.png" alt="Un recuerdo nuestro juntos">
+          <p class="book__whisper">Para ti,<br>mi lugar seguro.</p>
+        </div>
+        <article class="book__page book__page--right letter" data-letter="first">
+          <p class="letter__label">Carta uno</p>
+          <h2 data-letter-title></h2>
+          <div data-letter-body></div>
+          <p class="letter__signature" data-model="couple.signature"></p>
+          <button id="book-next" class="button button--ink" data-go="surprise.html">Hay una página más →</button>
+        </article>
+      </section>
+    </main>
+    <script src="../models/anniversaryModel.js"></script>
+    <script src="../controllers/pageController.js"></script>
+    <script src="../public/js/app.js"></script>
+  </body>
+</html>
+
