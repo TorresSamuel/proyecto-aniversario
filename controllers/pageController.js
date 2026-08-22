@@ -162,7 +162,7 @@ window.PageController = (() => {
       const body = document.createElement("p");
       body.textContent = letter.body;
       savedLetter.append(title, body);
-      savedLetter.hidden = false;
+      savedLetter.hidden = true;
     };
     try {
       const saved = JSON.parse(localStorage.getItem(letterKey));
