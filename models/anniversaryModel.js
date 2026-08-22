@@ -10,8 +10,8 @@ window.AnniversaryModel = {
       title: "Una página para nosotros",
       paragraphs: [
         "Hoy celebramos nueve meses de risas, conversaciones eternas y momentos que se han vuelto mi lugar favorito.",
-        "Gracias por hacer especiales los días sencillos y por convertir cada recuerdo contigo en algo que quiero guardar.",
-        "Esta es solo la primera página de una historia que deseo seguir escribiendo a tu lado."
+        "Gracias por hacer especiales los días sencillos y por convertir cada recuerdo contigo en algo que quiero guardar y conservar para toda la vida, por que tu eres mi vida entera.",
+        "Esta es solo la continuacion de una historia que deseo seguir escribiendo a tu lado. "
       ]
     },
     concert: {
@@ -26,10 +26,9 @@ window.AnniversaryModel = {
   concert: {
     artist: "Álvaro Díaz",
     tour: "SAYONARA TOUR",
-    venue: "Por confirmar",
-    city: "Nuestra ciudad",
-    date: "Próximamente",
-    time: "Hora por confirmar",
+    city: "Bogotá, Colombia",
+    date: "04/09/2026",
+    time: "8:",
     admission: "2 entradas · Juntos"
   }
 };
