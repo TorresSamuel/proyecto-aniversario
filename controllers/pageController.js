@@ -2,6 +2,8 @@
 window.PageController = (() => {
   const $ = (selector, scope = document) => scope.querySelector(selector);
   const storageKey = "aniversario-future-memories";
+  const letterKey = "aniversario-second-letter";
+  const photoKey = "aniversario-event-photo";
 
   function goTo(path) {
     document.body.classList.add("is-leaving");
@@ -149,12 +151,87 @@ window.PageController = (() => {
     ticketStack.append(ticket);
   }
 
+  function bindSecondLetter() {
+    const form = $("#letter-form");
+    const savedLetter = $("#saved-letter");
+    if (!form || !savedLetter) return;
+    const render = (letter) => {
+      savedLetter.replaceChildren();
+      const title = document.createElement("h3");
+      title.textContent = letter.title;
+      const body = document.createElement("p");
+      body.textContent = letter.body;
+      savedLetter.append(title, body);
+      savedLetter.hidden = false;
+    };
+    try {
+      const saved = JSON.parse(localStorage.getItem(letterKey));
+      if (saved?.title && saved?.body) {
+        $("#letter-title").value = saved.title;
+        $("#letter-body").value = saved.body;
+        render(saved);
+      }
+    } catch { /* almacenamiento no disponible o corrupto */ }
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const letter = { title: $("#letter-title").value.trim(), body: $("#letter-body").value.trim() };
+      if (!letter.title || !letter.body) return;
+      localStorage.setItem(letterKey, JSON.stringify(letter));
+      render(letter);
+    });
+  }
+
+  function bindPhotoMemory() {
+    const form = $("#photo-memory-form");
+    const input = $("#memory-photo");
+    const description = $("#photo-description");
+    const savedPhoto = $("#saved-photo");
+    const reminder = $("#photo-reminder");
+    if (!form || !input || !description || !savedPhoto || !reminder) return;
+    const render = (memory) => {
+      $("img", savedPhoto).src = memory.image;
+      $("figcaption", savedPhoto).textContent = memory.description;
+      savedPhoto.hidden = false;
+      reminder.textContent = "Recuerdo guardado. Durante el evento pueden crear otra página cuando quieran.";
+      reminder.classList.add("is-complete");
+    };
+    try {
+      const saved = JSON.parse(localStorage.getItem(photoKey));
+      if (saved?.image && saved?.description) {
+        description.value = saved.description;
+        render(saved);
+      }
+    } catch { /* almacenamiento no disponible o corrupto */ }
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const file = input.files[0];
+      const text = description.value.trim();
+      if (!file || !text) {
+        reminder.textContent = "Recuerda subir una foto y escribir su descripción mientras viven el evento.";
+        return;
+      }
+      const reader = new FileReader();
+      reader.addEventListener("load", () => {
+        const memory = { image: reader.result, description: text };
+        try {
+          localStorage.setItem(photoKey, JSON.stringify(memory));
+          render(memory);
+        } catch {
+          reminder.textContent = "La foto es demasiado grande para guardarla. Prueba con una imagen más pequeña.";
+        }
+      });
+      reader.readAsDataURL(file);
+    });
+  }
+
   function init() {
     fillText();
     bindNavigation();
     bindBook();
     bindMemories();
     bindTicketReference();
+    bindSecondLetter();
+    bindPhotoMemory();
   }
   return { init, goTo };
 })();

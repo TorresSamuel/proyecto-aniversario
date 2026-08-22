@@ -1,3 +1,59 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f5e8e7"><title>Nuestras próximas páginas</title><link rel="stylesheet" href="../public/css/style-subtle.css"></head>
-<body class="subtle-page notes-page"><main class="notes-shell"><a class="back-link" href="concert.html">← volver a la sorpresa</a><section class="notebook" aria-labelledby="notes-title"><p class="eyebrow">archivo de recuerdos</p><h1 id="notes-title">Nuestras próximas páginas</h1><p class="notes-intro">Escribe una nota, una fecha especial o una razón para sonreír. Se guarda en este dispositivo.</p><form id="memory-form" class="memory-form"><label for="memory-text">Nuevo recuerdo</label><textarea id="memory-text" maxlength="280" placeholder="Hoy quiero recordar que..." required></textarea><button class="button button--ink" type="submit">Guardar en nuestra libreta</button></form><section id="memory-list" class="memory-list" aria-live="polite"></section></section></main><script src="../models/anniversaryModel.js"></script><script src="../controllers/pageController.js"></script><script src="../public/js/app.js"></script></body></html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="theme-color" content="#f5e8e7">
+		<title>Nuestras próximas páginas</title>
+		<link rel="stylesheet" href="../public/css/style-subtle.css">
+		<link rel="stylesheet" href="../public/css/style-notes.css">
+	</head>
+	<body class="subtle-page notes-page">
+		<main class="notes-shell">
+			<a class="back-link" href="/views/concert.html">← volver a la sorpresa</a>
+			<section class="notebook letter-sheet" aria-labelledby="letter-two-title">
+				<p class="eyebrow">una hoja para nosotros</p>
+				<h1 id="letter-two-title">Nuestra segunda carta</h1>
+				<p class="letter-sheet__hint">Escribe aquí una nueva página para guardar juntos.</p>
+				<form id="letter-form" class="memory-form letter-form">
+					<label for="letter-title">Título de la carta</label>
+					<input id="letter-title" maxlength="80" placeholder="Una nueva página para nosotros" required>
+					<label for="letter-body">Carta</label>
+					<textarea id="letter-body" maxlength="1200" placeholder="Escribe tu carta aquí..." required></textarea>
+					<button class="button button--ink" type="submit">Guardar segunda carta</button>
+				</form>
+				<article id="saved-letter" class="saved-letter" hidden></article>
+			</section>
+			<section class="notebook" aria-labelledby="notes-title">
+				<p class="eyebrow">archivo de recuerdos</p>
+				<h1 id="notes-title">Nuestras próximas páginas</h1>
+				<p class="notes-intro">Escribe una nota, una fecha especial o una razón para sonreír. Se guarda en este dispositivo.</p>
+				<form id="memory-form" class="memory-form">
+					<label for="memory-text">Nuevo recuerdo</label>
+					<textarea id="memory-text" maxlength="280" placeholder="Hoy quiero recordar que..." required></textarea>
+					<button class="button button--ink" type="submit">Guardar en nuestra libreta</button>
+				</form>
+				<section id="memory-list" class="memory-list" aria-live="polite"></section>
+			</section>
+			<section class="notebook photo-memory" aria-labelledby="photo-memory-title">
+				<p class="eyebrow">página pendiente</p>
+				<h2 id="photo-memory-title">Guarda este momento</h2>
+				<p id="photo-reminder" class="photo-reminder" role="status">Recuerda subir una foto y escribir su descripción mientras viven el evento.</p>
+				<form id="photo-memory-form" class="memory-form">
+					<label for="memory-photo">Foto del evento</label>
+					<input id="memory-photo" type="file" accept="image/*" required>
+					<label for="photo-description">¿Qué quieres recordar de este momento?</label>
+					<textarea id="photo-description" maxlength="500" placeholder="Describe este recuerdo..." required></textarea>
+					<button class="button button--ink" type="submit">Guardar foto y recuerdo</button>
+				</form>
+				<figure id="saved-photo" class="saved-photo" hidden>
+					<img alt="Foto guardada del evento">
+					<figcaption></figcaption>
+				</figure>
+			</section>
+		</main>
+		<script src="../models/anniversaryModel.js"></script>
+		<script src="../controllers/pageController.js"></script>
+		<script src="../public/js/app.js"></script>
+	</body>
+</html>

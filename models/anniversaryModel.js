@@ -28,7 +28,7 @@ window.AnniversaryModel = {
     tour: "SAYONARA TOUR",
     city: "Bogotá, Colombia",
     date: "04/09/2026",
-    time: "8:",
+    time: "8:00 PM",
     admission: "2 entradas · Juntos"
   }
 };
