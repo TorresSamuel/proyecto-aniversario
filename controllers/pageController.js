@@ -191,7 +191,7 @@ window.PageController = (() => {
     const render = (memory) => {
       $("img", savedPhoto).src = memory.image;
       $("figcaption", savedPhoto).textContent = memory.description;
-      savedPhoto.hidden = false;
+      savedPhoto.hidden = true;
       reminder.textContent = "Recuerdo guardado. Durante el evento pueden crear otra página cuando quieran.";
       reminder.classList.add("is-complete");
     };
