@@ -112,18 +112,32 @@ window.PageController = (() => {
   function bindTicketReference() {
     const ticketStack = $(".ticket-stack");
     if (!ticketStack || ticketStack.querySelector(".ticket-reference")) return;
+    const frame = document.createElement("figure");
+    frame.className = "ticket-reference-frame";
+    frame.style.width = "min(100%, 760px)";
+    frame.style.margin = "0 auto 32px";
+    frame.style.padding = "clamp(16px, 3vw, 28px)";
+    frame.style.background = "#ffeaf6";
+    frame.style.boxShadow = "10px 10px 0 #5d163c";
+    frame.style.clipPath = "polygon(0 0,100% 0,100% 94%,96% 97%,92% 94%,88% 97%,84% 94%,80% 97%,76% 94%,72% 97%,68% 94%,64% 97%,60% 94%,56% 97%,52% 94%,48% 97%,44% 94%,40% 97%,36% 94%,32% 97%,28% 94%,24% 97%,20% 94%,16% 97%,12% 94%,8% 97%,4% 94%,0 97%)";
+    const title = document.createElement("figcaption");
+    title.textContent = "ÁLVARO DÍAZ";
+    title.style.font = "700 clamp(1.5rem, 5vw, 3rem)/.9 'Space Grotesk', sans-serif";
+    title.style.letterSpacing = "-.05em";
+    title.style.color = "#1c0b18";
+    title.style.margin = "0 0 18px";
     const image = document.createElement("img");
     image.className = "ticket-reference";
     image.src = "../public/images/entradas-alvaro-diaz.jpeg";
     image.alt = "Entradas para el concierto de Álvaro Díaz";
-    image.style.width = "min(100%, 760px)";
+    image.style.width = "100%";
     image.style.height = "auto";
     image.style.display = "block";
     image.style.objectFit = "contain";
-    image.style.margin = "0 auto 32px";
     image.style.border = "1px solid #ff9bd766";
-    image.style.boxShadow = "10px 10px 0 #5d163c";
-    ticketStack.prepend(image);
+    frame.append(title, image);
+    ticketStack.querySelector(".concert-ticket")?.remove();
+    ticketStack.prepend(frame);
   }
 
   function init() {
