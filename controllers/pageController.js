@@ -137,7 +137,16 @@ window.PageController = (() => {
     image.style.border = "1px solid #ff9bd766";
     frame.append(title, image);
     ticketStack.querySelector(".concert-ticket")?.remove();
+    ticketStack.querySelector(".ticket-note")?.remove();
     ticketStack.prepend(frame);
+    const concert = window.AnniversaryModel.concert;
+    const ticket = document.createElement("article");
+    ticket.className = "concert-ticket mini-ticket";
+    ticket.style.width = "min(100%, 420px)";
+    ticket.style.margin = "16px auto 0";
+    ticket.style.boxShadow = "7px 7px 0 #ff4fb8";
+    ticket.innerHTML = `<div class="concert-ticket__top"><span>ADMIT ONE</span><span>✦</span></div><p class="concert-ticket__artist">${concert.artist}</p><p class="concert-ticket__tour">${concert.tour}</p><div class="concert-ticket__info"><p><strong>CIUDAD</strong><span>${concert.city}</span></p><p><strong>FECHA</strong><span>${concert.date}</span></p><p><strong>HORA</strong><span>${concert.time}</span></p></div><div class="barcode" aria-label="Código de barras decorativo"></div><small>${concert.admission}</small>`;
+    ticketStack.append(ticket);
   }
 
   function init() {
