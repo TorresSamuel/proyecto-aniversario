@@ -5,7 +5,8 @@ window.PageController = (() => {
 
   function goTo(path) {
     document.body.classList.add("is-leaving");
-    window.setTimeout(() => { window.location.href = path; }, 260);
+    const destination = path === "index.html" ? "/" : path.startsWith("/") ? path : `/views/${path}`;
+    window.setTimeout(() => { window.location.href = destination; }, 260);
   }
 
   function fillText() {
