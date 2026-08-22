@@ -152,6 +152,23 @@ window.PageController = (() => {
     ticketStack.append(ticket);
   }
 
+  function bindYokoAudio() {
+    if (!document.querySelector(".neon-page") || $(".yoko-player")) return;
+    const audio = document.createElement("audio");
+    audio.className = "yoko-player";
+    audio.controls = true;
+    audio.autoplay = true;
+    audio.loop = true;
+    audio.preload = "auto";
+    audio.src = "../public/audio/Yoko.mp3";
+    audio.setAttribute("aria-label", "Reproducir Yoko de Álvaro Díaz");
+    audio.style.display = "block";
+    audio.style.width = "min(100%, 420px)";
+    audio.style.margin = "0 0 28px auto";
+    audio.style.accentColor = "#ff4fb8";
+    document.querySelector(".concert-shell")?.prepend(audio);
+  }
+
   function bindSecondLetter() {
     const form = $("#letter-form");
     const savedLetter = $("#saved-letter");
@@ -297,6 +314,7 @@ window.PageController = (() => {
     bindBook();
     bindMemories();
     bindTicketReference();
+    bindYokoAudio();
     bindSecondLetter();
     bindPhotoMemory();
     bindArchives();
