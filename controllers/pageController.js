@@ -7,7 +7,8 @@ window.PageController = (() => {
 
   function goTo(path) {
     document.body.classList.add("is-leaving");
-    const destination = path === "index.html" ? "/" : path.startsWith("/") ? path : `/views/${path}`;
+    const isInsideViews = window.location.pathname.includes("/views/");
+    const destination = path === "index.html" && !isInsideViews ? "/" : isInsideViews ? path : `/views/${path}`;
     window.setTimeout(() => { window.location.href = destination; }, 260);
   }
 
