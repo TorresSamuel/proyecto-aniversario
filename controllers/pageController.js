@@ -78,48 +78,13 @@ window.PageController = (() => {
     });
   }
 
-  function createMemoryCard(memory) {
-    const article = document.createElement("article");
-    article.className = "memory-card";
-    const removeButton = document.createElement("button");
-    removeButton.className = "memory-card__delete";
-    removeButton.setAttribute("aria-label", "Eliminar recuerdo");
-    removeButton.textContent = "×";
-    const message = document.createElement("p");
-    message.textContent = memory.text;
-    const date = document.createElement("time");
-    date.textContent = memory.date;
-    article.append(removeButton, message, date);
-    $(".memory-card__delete", article).addEventListener("click", () => {
-      const memories = getMemories().filter((item) => item.id !== memory.id);
-      saveMemories(memories);
-      article.remove();
-      renderEmptyState();
-    });
-    return article;
-  }
-
   function getMemories() { return readEntries(storageKey); }
   function saveMemories(memories) { localStorage.setItem(storageKey, JSON.stringify(memories)); }
-  function renderEmptyState() {
-    const list = $("#memory-list");
-    if (!list) return;
-    $("#memory-empty")?.remove();
-    if (!list.children.length) {
-      const empty = document.createElement("p");
-      empty.id = "memory-empty";
-      empty.className = "memory-empty";
-      empty.textContent = "Aquí aparecerán las próximas páginas de nuestra historia.";
-      list.append(empty);
-    }
-  }
 
   function bindMemories() {
     const form = $("#memory-form");
-    const list = $("#memory-list");
-    if (!form || !list) return;
-    getMemories().forEach((memory) => list.append(createMemoryCard(memory)));
-    renderEmptyState();
+    const reminder = $("#future-reminder");
+    if (!form || !reminder) return;
     form.addEventListener("submit", (event) => {
       event.preventDefault();
       const field = $("#memory-text");
@@ -131,9 +96,8 @@ window.PageController = (() => {
         date: new Date().toLocaleDateString("es-CO", { day: "numeric", month: "long", year: "numeric" })
       };
       saveMemories([...getMemories(), memory]);
-      $("#memory-empty")?.remove();
-      list.prepend(createMemoryCard(memory));
       form.reset();
+      reminder.textContent = "Guardado en Futuro. Puedes consultarlo desde el botón flotante.";
       field.focus();
     });
   }
@@ -191,31 +155,15 @@ window.PageController = (() => {
 
   function bindSecondLetter() {
     const form = $("#letter-form");
-    const savedLetter = $("#saved-letter");
-    if (!form || !savedLetter) return;
-    const render = (letter) => {
-      savedLetter.replaceChildren();
-      const title = document.createElement("h3");
-      title.textContent = letter.title;
-      const body = document.createElement("p");
-      body.textContent = letter.body;
-      savedLetter.append(title, body);
-      savedLetter.hidden = true;
-    };
-    try {
-      const saved = readEntries(letterKey);
-      const lastLetter = saved.at(-1);
-      if (lastLetter?.title && lastLetter?.body) {
-        render(lastLetter);
-      }
-    } catch { /* almacenamiento no disponible o corrupto */ }
+    const reminder = $("#letter-reminder");
+    if (!form || !reminder) return;
     form.addEventListener("submit", (event) => {
       event.preventDefault();
       const letter = { title: $("#letter-title").value.trim(), body: $("#letter-body").value.trim() };
       if (!letter.title || !letter.body) return;
       addEntry(letterKey, letter);
-      render(letter);
       form.reset();
+      reminder.textContent = "Carta guardada. Puedes leerla desde el botón flotante Cartas.";
     });
   }
 
@@ -223,23 +171,8 @@ window.PageController = (() => {
     const form = $("#photo-memory-form");
     const input = $("#memory-photo");
     const description = $("#photo-description");
-    const savedPhoto = $("#saved-photo");
     const reminder = $("#photo-reminder");
-    if (!form || !input || !description || !savedPhoto || !reminder) return;
-    const render = (memory) => {
-      $("img", savedPhoto).src = memory.image;
-      $("figcaption", savedPhoto).textContent = memory.description;
-      savedPhoto.hidden = true;
-      reminder.textContent = "Recuerdo guardado. Durante el evento pueden crear otra página cuando quieran.";
-      reminder.classList.add("is-complete");
-    };
-    try {
-      const saved = readEntries(photoKey);
-      const lastMemory = saved.at(-1);
-      if (lastMemory?.image && lastMemory?.description) {
-        render(lastMemory);
-      }
-    } catch { /* almacenamiento no disponible o corrupto */ }
+    if (!form || !input || !description || !reminder) return;
     form.addEventListener("submit", (event) => {
       event.preventDefault();
       const file = input.files[0];
@@ -253,8 +186,9 @@ window.PageController = (() => {
         const memory = { image: reader.result, description: text, title: "Recuerdo del evento" };
         try {
           addEntry(photoKey, memory);
-          render(memory);
           form.reset();
+          reminder.textContent = "Recuerdo guardado. Puedes verlo desde el botón flotante Recuerdos.";
+          reminder.classList.add("is-complete");
         } catch {
           reminder.textContent = "La foto es demasiado grande para guardarla. Prueba con una imagen más pequeña.";
         }

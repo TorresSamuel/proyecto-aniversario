@@ -22,7 +22,7 @@
 					<textarea id="letter-body" maxlength="1200" placeholder="Escribe tu carta aquí..." required></textarea>
 					<button class="button button--ink" type="submit">Guardar segunda carta</button>
 				</form>
-				<article id="saved-letter" class="saved-letter" hidden></article>
+				<p id="letter-reminder" class="save-reminder" role="status"></p>
 			</section>
 			<section class="notebook" aria-labelledby="notes-title">
 				<p class="eyebrow">archivo de recuerdos</p>
@@ -33,7 +33,7 @@
 					<textarea id="memory-text" maxlength="280" placeholder="Hoy quiero recordar que..." required></textarea>
 					<button class="button button--ink" type="submit">Guardar en nuestra libreta</button>
 				</form>
-				<section id="memory-list" class="memory-list" aria-live="polite" hidden></section>
+				<p id="future-reminder" class="save-reminder" role="status"></p>
 			</section>
 			<section class="notebook photo-memory" aria-labelledby="photo-memory-title">
 				<p class="eyebrow">página pendiente</p>
@@ -46,21 +46,14 @@
 					<textarea id="photo-description" maxlength="500" placeholder="Describe este recuerdo..." required></textarea>
 					<button class="button button--ink" type="submit">Guardar foto y recuerdo</button>
 				</form>
-				<figure id="saved-photo" class="saved-photo" hidden>
-					<img alt="Foto guardada del evento">
-					<figcaption></figcaption>
-				</figure>
 			</section>
-			<section class="archive-actions archive-book" aria-labelledby="archive-title">
-				<p class="eyebrow">nuestro archivo</p>
-				<h2 id="archive-title">Todo lo que vamos guardando</h2>
+			<nav class="archive-actions archive-actions--floating" aria-label="Información guardada">
 				<div class="archive-buttons">
 					<button class="button button--ink" type="button" data-modal="letters-modal">Cartas</button>
 					<button class="button button--ink" type="button" data-modal="future-modal">Futuro</button>
 					<button class="button button--ink" type="button" data-modal="memories-modal">Recuerdos</button>
 				</div>
-				<a class="button button--back" href="index.html">← Volver al inicio</a>
-			</section>
+			</nav>
 		</main>
 		<dialog id="letters-modal" class="archive-modal">
 			<div class="archive-modal__head"><h2>Cartas</h2><button class="modal-close" type="button" data-close-modal aria-label="Cerrar">×</button></div>
