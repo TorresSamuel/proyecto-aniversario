@@ -1,9 +1,33 @@
 /* Controlador: gestiona eventos, navegación y recuerdos persistentes. */
 window.PageController = (() => {
   const $ = (selector, scope = document) => scope.querySelector(selector);
+  // Cada apartado usa una clave propia y siempre almacena una lista.
   const storageKey = "aniversario-future-memories";
-  const letterKey = "aniversario-second-letter";
-  const photoKey = "aniversario-event-photo";
+  const letterKey = "aniversario-letters";
+  const photoKey = "aniversario-event-memories";
+
+  function readEntries(key) {
+    try {
+      const entries = JSON.parse(localStorage.getItem(key));
+      // También permite recuperar los datos guardados por la versión anterior,
+      // que usaba un único objeto para cartas y fotos.
+      if (Array.isArray(entries)) return entries;
+      return entries && typeof entries === "object" ? [entries] : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function addEntry(key, entry) {
+    const entries = readEntries(key);
+    entries.push({
+      id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
+      createdAt: new Date().toISOString(),
+      ...entry
+    });
+    localStorage.setItem(key, JSON.stringify(entries));
+    return entries;
+  }
 
   function goTo(path) {
     document.body.classList.add("is-leaving");
@@ -75,9 +99,7 @@ window.PageController = (() => {
     return article;
   }
 
-  function getMemories() {
-    try { return JSON.parse(localStorage.getItem(storageKey)) || []; } catch { return []; }
-  }
+  function getMemories() { return readEntries(storageKey); }
   function saveMemories(memories) { localStorage.setItem(storageKey, JSON.stringify(memories)); }
   function renderEmptyState() {
     const list = $("#memory-list");
@@ -103,7 +125,11 @@ window.PageController = (() => {
       const field = $("#memory-text");
       const text = field.value.trim();
       if (!text) return;
-      const memory = { id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()), text, date: new Date().toLocaleDateString("es-CO", { day: "numeric", month: "long", year: "numeric" }) };
+      const memory = {
+        id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
+        text,
+        date: new Date().toLocaleDateString("es-CO", { day: "numeric", month: "long", year: "numeric" })
+      };
       saveMemories([...getMemories(), memory]);
       $("#memory-empty")?.remove();
       list.prepend(createMemoryCard(memory));
@@ -177,19 +203,19 @@ window.PageController = (() => {
       savedLetter.hidden = true;
     };
     try {
-      const saved = JSON.parse(localStorage.getItem(letterKey));
-      if (saved?.title && saved?.body) {
-        $("#letter-title").value = saved.title;
-        $("#letter-body").value = saved.body;
-        render(saved);
+      const saved = readEntries(letterKey);
+      const lastLetter = saved.at(-1);
+      if (lastLetter?.title && lastLetter?.body) {
+        render(lastLetter);
       }
     } catch { /* almacenamiento no disponible o corrupto */ }
     form.addEventListener("submit", (event) => {
       event.preventDefault();
       const letter = { title: $("#letter-title").value.trim(), body: $("#letter-body").value.trim() };
       if (!letter.title || !letter.body) return;
-      localStorage.setItem(letterKey, JSON.stringify(letter));
+      addEntry(letterKey, letter);
       render(letter);
+      form.reset();
     });
   }
 
@@ -208,10 +234,10 @@ window.PageController = (() => {
       reminder.classList.add("is-complete");
     };
     try {
-      const saved = JSON.parse(localStorage.getItem(photoKey));
-      if (saved?.image && saved?.description) {
-        description.value = saved.description;
-        render(saved);
+      const saved = readEntries(photoKey);
+      const lastMemory = saved.at(-1);
+      if (lastMemory?.image && lastMemory?.description) {
+        render(lastMemory);
       }
     } catch { /* almacenamiento no disponible o corrupto */ }
     form.addEventListener("submit", (event) => {
@@ -224,10 +250,11 @@ window.PageController = (() => {
       }
       const reader = new FileReader();
       reader.addEventListener("load", () => {
-        const memory = { image: reader.result, description: text };
+        const memory = { image: reader.result, description: text, title: "Recuerdo del evento" };
         try {
-          localStorage.setItem(photoKey, JSON.stringify(memory));
+          addEntry(photoKey, memory);
           render(memory);
+          form.reset();
         } catch {
           reminder.textContent = "La foto es demasiado grande para guardarla. Prueba con una imagen más pequeña.";
         }
@@ -271,10 +298,9 @@ window.PageController = (() => {
         if (!modal) return;
         if (button.dataset.modal === "letters-modal") {
           const letters = [{ title: model.letters.first.title, body: model.letters.first.paragraphs.join("\n\n") }];
-          try {
-            const saved = JSON.parse(localStorage.getItem(letterKey));
-            if (saved?.title && saved?.body) letters.push({ title: saved.title, body: saved.body });
-          } catch { /* carta aún no guardada */ }
+          readEntries(letterKey).forEach((letter) => {
+            if (letter.title && letter.body) letters.push(letter);
+          });
           renderArchiveList($("#letters-archive"), letters, "Todavía no hay cartas guardadas.");
         }
         if (button.dataset.modal === "future-modal") {
@@ -282,11 +308,9 @@ window.PageController = (() => {
           renderArchiveList($("#future-archive"), future, "Aquí aparecerán las cosas que quieran vivir en el futuro.");
         }
         if (button.dataset.modal === "memories-modal") {
-          const memories = [];
-          try {
-            const saved = JSON.parse(localStorage.getItem(photoKey));
-            if (saved?.image && saved?.description) memories.push({ title: "Recuerdo del evento", body: saved.description, image: saved.image });
-          } catch { /* foto aún no guardada */ }
+          const memories = readEntries(photoKey)
+            .filter((memory) => memory.image && memory.description)
+            .map((memory) => ({ title: memory.title || "Recuerdo del evento", body: memory.description, image: memory.image }));
           renderArchiveList($("#memories-archive"), memories, "Aquí aparecerán sus fotos y descripciones.");
         }
         modal.showModal();
