@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0912">
+<title>Nuestra órbita · Samuel y Valentina</title>
+<meta name="description" content="El primer aniversario de Samuel y Valentina.">
+<link rel="canonical" href="https://torressamuel.github.io/proyecto-aniversario/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#0b0912;--ink:#fff6ff;--muted:#beb1cb;--violet:#d6a9ff;--line:#ffffff25;--serif:"Instrument Serif",Georgia,serif;--sans:"DM Sans",system-ui,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:86px}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans)}a{color:inherit;text-decoration:none}button,input,select{font:inherit;color:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #e5b4ff;outline-offset:5px}[hidden]{display:none!important}
+.wrap{width:min(1160px,calc(100% - 48px));margin-inline:auto}.nav{position:sticky;top:0;z-index:2;background:#0b0912e8;border-bottom:1px solid var(--line);backdrop-filter:blur(16px)}.nav .wrap{display:flex;justify-content:space-between;align-items:center;min-height:64px;gap:16px}.brand{letter-spacing:.12em;font-weight:700;white-space:nowrap}.brand span{color:var(--violet)}.links{display:flex;gap:clamp(12px,3vw,34px);font-size:.9rem;color:var(--muted)}.links a:hover{color:#fff}
+.hero{position:relative;isolation:isolate;overflow:hidden;border-bottom:1px solid var(--line);background:radial-gradient(ellipse at 76% 44%,#322066 0%,#1a102d 32%,transparent 66%),#0b0912}.hero .wrap{display:grid;grid-template-columns:.95fr 1.05fr;align-items:center;min-height:min(720px,87svh);position:relative}.hero-copy{z-index:1;padding:70px 0}.label{color:var(--violet);font-size:.86rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;margin:0 0 16px}h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:.96;margin:0}h1{font-size:clamp(4rem,10vw,9rem);letter-spacing:-.045em}h1 em{display:block;color:#e1bcff;font-weight:400}h2{font-size:clamp(3.4rem,7vw,6rem)}h3{font-size:clamp(2rem,4vw,3.6rem)}p{margin:0}.lede{max-width:43ch;color:var(--muted);margin:22px 0 28px}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:100px;padding:11px 21px;background:#20162e;color:var(--ink);transition:background .25s,transform .25s;min-height:46px}.btn:hover{background:#39254b;transform:translateY(-2px)}.primary{background:#e8c9ff;color:#200c30;border-color:transparent;font-weight:700}.primary:hover{background:#f1ddff}.clock{display:flex;gap:16px;align-items:baseline;min-height:35px;margin-bottom:17px;color:#e2cfee}.clock strong{font-size:1.35rem;font-variant-numeric:tabular-nums;color:#fff}.art{width:110%;aspect-ratio:1;position:relative;margin-left:-4%;display:grid;place-items:center}.art::before,.art::after{content:"";position:absolute;inset:17% 1%;border:1px solid #c5a6ff45;border-radius:50%;transform:rotate(-25deg) scaleY(.49);pointer-events:none}.art::after{transform:rotate(26deg) scaleY(.65);border-color:#7c93ff38}.art canvas{width:100%;height:100%;position:absolute}.art-note{position:absolute;bottom:9%;right:4%;color:#c5aade;font-size:.82rem;letter-spacing:.18em}
+.section{padding:clamp(66px,9vw,125px) 0;border-bottom:1px solid var(--line)}.section-head{margin-bottom:38px}.section-head p:last-child{color:var(--muted);margin-top:16px;max-width:54ch}.music{background:#110c1a}.music-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:36px;align-items:start}.now{background:radial-gradient(ellipse at top right,#392055,transparent 75%),#181120;border:1px solid var(--line);border-radius:20px;padding:clamp(20px,4vw,38px);display:grid;align-content:center;min-height:236px}.now p:not(.label){margin:12px 0 20px;color:var(--muted)}.now a{justify-self:start}.tracks{display:grid;gap:8px}.track{background:transparent;border:1px solid transparent;border-bottom-color:var(--line);padding:14px 16px;display:grid;grid-template-columns:25px 1fr;align-items:center;gap:12px;text-align:left;border-radius:10px}.track:hover,.track[aria-pressed=true]{background:#21172f;border-color:#b68be45c}.track span:first-child{color:var(--violet)}.track small{display:block;color:var(--muted);font-size:.85rem}
+.ticket{display:grid;grid-template-columns:1fr .32fr;overflow:hidden;border:1px solid #9479bc90;border-radius:20px;background:radial-gradient(at 5% 0%,#422c64,transparent 65%),linear-gradient(115deg,#20172d,#160e29 62%,#232650);position:relative;isolation:isolate;transition:transform .35s,box-shadow .35s}.ticket:hover,.ticket:focus-within,.ticket.glow{transform:translateY(-3px);box-shadow:0 0 40px #a36aff38}.ticket-main,.stub{padding:clamp(22px,4vw,48px)}.stub{border-left:1px dashed #e2c9ff65;display:grid;align-content:center;gap:14px;text-align:center}.bars{height:38px;background:repeating-linear-gradient(90deg,#e5d4ff 0 2px,transparent 2px 5px,#e5d4ff 5px 6px,transparent 6px 10px,#e5d4ff 10px 14px,transparent 14px 18px);opacity:.65}.ticket-meta{display:flex;gap:12px 26px;flex-wrap:wrap;margin-top:22px;color:#eee1ff}.ticket-note{margin-top:20px;color:#e2d0f2;max-width:60ch}.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}.photo{display:grid;place-items:center;text-align:center;min-height:128px;border:1px dashed #c9a9ed60;border-radius:14px;background:#15101f;color:var(--muted);padding:12px;overflow:hidden}.photo img{display:block;width:100%;max-height:280px;object-fit:cover;border-radius:9px}.photo span{display:block}
+.archive{background:radial-gradient(ellipse at 10% 15%,#281630,transparent 50%),#100c16}.filters{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 23px}.filters input,.filters select{min-height:46px;border:1px solid var(--line);background:#18111f;border-radius:12px;padding:10px 14px}.filters input{flex:1 1 260px;min-width:0}.filters select{flex:0 1 auto;max-width:100%}.letters{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.letter{text-align:left;border:1px solid var(--line);border-radius:16px;background:#1a1223;padding:23px;min-height:170px;display:grid;align-content:start;gap:12px;transition:background .25s,border .25s}.letter:hover{background:#2b1a38;border-color:#d7a6ff80}.letter.feature{grid-column:1/-1;background:radial-gradient(at 97% 4%,#53316a,transparent 65%),#25172e;min-height:200px;padding:clamp(23px,5vw,52px)}.letter .label{margin:0}.letter p:last-child{color:var(--muted)}.empty{padding:16px 0;color:var(--muted)}
+.chapter{display:grid;grid-template-columns:.53fr 1fr;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#171020}.chapter-art{display:grid;place-items:center;min-height:240px;background:radial-gradient(at 50% 70%,#4631a8,transparent 70%),linear-gradient(135deg,#421944,#14112a);font:italic clamp(6rem,13vw,11rem)/1 var(--serif);color:#e8dbff;text-shadow:0 0 35px #be79ff}.chapter-copy{padding:clamp(24px,5vw,56px);align-self:center}.chapter-copy p:not(.label){margin:15px 0 22px;color:var(--muted);max-width:50ch}.actions{display:flex;gap:10px;flex-wrap:wrap}.preview{width:100%;height:min(600px,75vh);border:1px solid var(--line);border-radius:16px;margin-top:16px;background:#181023}
+footer{text-align:center;padding:60px 20px;color:var(--muted)}footer strong{display:block;font:italic 2.6rem var(--serif);color:#ecd6ff;margin-bottom:8px}dialog{width:min(780px,calc(100% - 26px));max-height:87vh;max-height:87dvh;border:1px solid #d2aafd80;border-radius:20px;padding:0;background:#241a2d;color:#fff3ff;overflow:auto}dialog::backdrop{background:#08040ce0;backdrop-filter:blur(7px)}.reader-head{position:sticky;top:0;background:#241a2d;display:flex;justify-content:flex-end;padding:12px 16px;border-bottom:1px solid var(--line)}.reader{padding:clamp(23px,6vw,64px)}.reader h2{font-size:clamp(3rem,7vw,5.4rem);margin:0 0 25px}.body-letter{white-space:pre-wrap;font-size:clamp(1.02rem,2vw,1.15rem);line-height:1.9;color:#f3e6f5;overflow-wrap:anywhere}body:has(dialog[open]){overflow:hidden}
+@media(max-width:760px){.wrap{width:calc(100% - 32px)}.nav .wrap{min-height:58px;gap:8px}.links{gap:10px;font-size:.85rem}.brand{font-size:.86rem}.hero .wrap{grid-template-columns:1fr;min-height:0}.hero-copy{padding:53px 0 4px}.hero{background:radial-gradient(ellipse at 52% 75%,#30205b,transparent 62%),#0b0912}.art{width:min(100%,450px);margin:-18px auto 0;aspect-ratio:1.2}.art-note{bottom:7%}.music-grid,.chapter{grid-template-columns:1fr}.letters{grid-template-columns:repeat(2,1fr)}.chapter-art{min-height:168px}}
+@media(max-width:420px){.letters{grid-template-columns:1fr}.ticket{grid-template-columns:1fr}.stub{border-left:0;border-top:1px dashed #e2c9ff65;grid-template-columns:1fr 1fr;align-items:center;text-align:left}.ticket .bars{height:26px}.gallery{gap:8px}.photo{min-height:105px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+.route-menu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;max-width:470px;margin-top:20px}
+.route-card{display:grid;grid-template-columns:26px minmax(0,1fr);align-items:center;gap:10px;padding:12px 13px;border:1px solid #d3aaff42;border-radius:13px;background:linear-gradient(135deg,#312047,#181121);transition:transform .22s,border-color .22s,background .22s}
+.route-card:hover{transform:translateY(-3px);border-color:#d3aaffa8;background:linear-gradient(135deg,#442b62,#241531)}
+.route-card strong,.route-card small{display:block}.route-card strong{line-height:1.3}.route-card small{color:var(--muted);font-size:.82rem}.route-icon{color:#e2b5ff;text-align:center;font-size:1.25rem}
+.links a[aria-current="page"]{color:#f4dfff;text-decoration:underline;text-underline-offset:5px}
+.route-return{display:inline-flex;align-items:center;gap:8px;margin:0 0 29px;color:#e3bcff;font-weight:600}.route-return:hover{text-decoration:underline;text-underline-offset:4px}
+.section[data-route]{padding-top:clamp(35px,6vw,78px);min-height:calc(100svh - 65px)}
+.route-heading:focus{outline:none}
+@media(max-width:760px){.hero-copy{padding-bottom:14px}.route-menu{margin-top:12px}.art{margin-top:0}.section[data-route]{min-height:calc(100svh - 58px)}}
+@media(max-width:360px){.route-card{gap:5px;padding-inline:8px}.route-card small{font-size:.77rem}}
+@media(prefers-reduced-motion:no-preference){[data-route]:not([hidden]){animation:route-in .32s ease-out both}@keyframes route-in{from{opacity:.25;transform:translateY(7px)}to{opacity:1;transform:none}}}
+
+.memory{background:radial-gradient(ellipse at 75% 4%,#2c193e,transparent 56%),#100b18}
+.memory-chapter{margin-bottom:24px}.memory-chapter .chapter-art{font-size:clamp(4.5rem,10vw,9rem)}
+.memory-form{margin:24px 0 14px;padding:clamp(18px,4vw,34px);background:#191122;border:1px solid var(--line);border-radius:17px}
+.memory-form h3{font-size:clamp(2rem,4vw,3rem);margin-bottom:13px}.memory-form label{display:grid;gap:6px;font-weight:600}
+.memory-form input{width:100%;min-width:0;padding:9px 12px;background:#110d18;border:1px solid #ffffff3f;border-radius:9px}
+.memory-form input::file-selector-button{padding:6px 10px;border:0;border-radius:6px;background:#dac0ee;color:#1e1027;margin-right:10px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px;margin-bottom:15px}.feedback{color:#e5ccef;min-height:1.65em;margin-top:9px}.feedback:empty{display:none}
+.photo-form form{display:grid;gap:9px;margin:13px 0 7px}.photo-form .btn{justify-self:start}.photo-form small{color:var(--muted)}
+:is(#saved-photos,#alvaro-saved-photos):empty,.saved-memories:empty{display:none}:is(#saved-photos,#alvaro-saved-photos) .photo{padding:0;border-style:solid}:is(#saved-photos,#alvaro-saved-photos) img{height:clamp(130px,25vw,270px)}
+.saved-memories{display:grid;gap:10px;margin:20px 0}.saved-entry{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid var(--line);border-radius:12px;padding:13px 16px;background:#1a1223}.saved-entry div{min-width:0;overflow-wrap:anywhere}.saved-entry strong{display:block}.saved-entry small{color:var(--muted)}.saved-entry .btn{flex:none}
+.now .spotify-frame{border:0;border-radius:12px;width:100%;height:152px;margin:10px 0 0}.now .play-hint{font-size:.85rem;margin:5px 0 14px}
+@media(max-width:760px){.links{gap:8px;font-size:.83rem}.music-grid{display:flex;flex-direction:column;gap:16px}.music-grid>*{width:100%}}
+@media(max-width:460px){.fields{grid-template-columns:1fr}.nav .wrap{width:calc(100% - 24px)}.links{gap:7px;font-size:.77rem}.brand{letter-spacing:0;font-size:.8rem}}
+
+.alvaro-video{margin:0 0 26px;border:1px solid #b99ade65;border-radius:22px;overflow:hidden;background:radial-gradient(ellipse at 92% 0%,#472765,transparent 65%),#181023}
+.alvaro-video figcaption{padding:clamp(20px,4vw,37px)}.alvaro-video .label{margin-bottom:10px}.video-stage{display:grid;place-items:center;padding:clamp(0px,2vw,22px);background:radial-gradient(ellipse at 50% 55%,#39204c,#0d0915 80%)}
+.video-stage video{display:block;width:auto;max-width:100%;max-height:min(70svh,650px);background:#0b0912;border-radius:10px}
+@media(max-width:620px){.video-stage{padding:0}.video-stage video{width:100%;max-height:65svh;border-radius:0}}
+</style>
+</head>
+<body>
+<header class="nav"><nav class="wrap" aria-label="Navegación principal"><a class="brand" href="#inicio" aria-label="Samuel y Valentina, inicio">S <span>✦</span> V</a><div class="links"><a href="#musica">Música</a><a href="#boletas">Boletas</a><a href="#cartas">Cartas</a><a href="#momentos">Momentos</a><a href="#nueve-meses">9 meses</a></div></nav></header>
+<main>
+<section class="hero" id="inicio" data-route><div class="wrap">
+<div class="hero-copy"><p class="label">Samuel &amp; Valentina</p><h1 class="route-heading" tabindex="-1">Primer <em>aniversario</em></h1><p class="lede">Un año contigo. Y todavía me hace ilusión todo lo que nos queda por vivir.</p><div class="clock" id="clock">Un año juntos ♡</div><nav class="route-menu" aria-label="Apartados del aniversario">
+<a class="route-card" href="#musica"><span class="route-icon" aria-hidden="true">♫</span><span><strong>Música</strong><small>Canciones para ti</small></span></a>
+<a class="route-card" href="#boletas"><span class="route-icon" aria-hidden="true">◇</span><span><strong>Boletas</strong><small>Nuestro plan con NSQK</small></span></a>
+<a class="route-card" href="#cartas"><span class="route-icon" aria-hidden="true">♡</span><span><strong>Cartas</strong><small>Palabras para guardar</small></span></a>
+<a class="route-card" href="#nueve-meses"><span class="route-icon" aria-hidden="true">◒</span><span><strong>9 meses</strong><small>La etapa de Álvaro Díaz</small></span></a>
+<a class="route-card" href="#momentos"><span class="route-icon" aria-hidden="true">✧</span><span><strong>Momentos</strong><small>Recuerdos con canción</small></span></a>
+</nav></div>
+<div class="art" aria-hidden="true"><canvas id="heart"></canvas><span class="art-note">NUESTRA ÓRBITA ✧</span></div>
+</div></section>
+<section class="section music" id="musica" data-route hidden><div class="wrap"><a class="route-return" href="#inicio"><span aria-hidden="true">‹</span> Volver al inicio</a><div class="section-head"><p class="label">Para ponernos en ambiente</p><h2 class="route-heading" tabindex="-1">Nuestra frecuencia</h2><p>NSQK, Álvaro Díaz y Murder. Elige una canción y dale a reproducir.</p></div><div class="music-grid">
+<div class="now" aria-live="polite"><p class="label">Canción seleccionada</p><h3 id="track-title"></h3><p id="track-note"></p><iframe id="spotify-player" class="spotify-frame" title="Reproductor de Spotify" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" hidden></iframe><p class="play-hint" id="play-hint" hidden>Spotify puede ofrecer una vista previa según tu sesión y navegador.</p><a id="track-link" class="btn" target="_blank" rel="noopener noreferrer">Abrir en Spotify</a></div>
+<div class="tracks" id="tracks" aria-label="Canciones para dedicar"></div>
+</div></div></section>
+<section class="section" id="boletas" data-route hidden><div class="wrap"><a class="route-return" href="#inicio"><span aria-hidden="true">‹</span> Volver al inicio</a><div class="section-head"><p class="label">Vault · NSQK</p><h2 class="route-heading" tabindex="-1">Una noche pendiente</h2><p>Una fecha marcada en el calendario y un plan que ya me ilusiona compartir contigo.</p></div>
+<!-- BOLETA NSQK: cambia el evento, la fecha, la ciudad y la dedicatoria aquí. El serial y las barras son decorativos. -->
+<article class="ticket" id="ticket"><div class="ticket-main"><p class="label">Pase conmemorativo · Segunda fecha</p><h3>NSQK · Mosca Tour</h3><div class="ticket-meta"><time datetime="2027-08-29T20:00:00-05:00">29 de agosto de 2027 · 8:00 p. m.</time><span>Royal Center · Bogotá</span><span>Segundo piso · Etapa 2</span></div><p class="ticket-note">Me emociona pensar en las canciones que vamos a cantar juntos y en lo que nos vamos a contar de vuelta a casa.</p></div><div class="stub"><strong>SV–0829</strong><div class="bars" aria-hidden="true"></div><button class="btn" id="shine" type="button" aria-pressed="false">Iluminar pase</button></div></article>
+<div class="gallery" id="gallery" aria-label="Galería del concierto"></div>
+<div class="memory-form"><h3>Las fotos de NSQK</h3><p><a class="btn" href="https://orbita-sv-aniversario.wiseghost130.chatgpt.site/#boletas">Abrir el álbum privado</a></p></div>
+</div></section>
+<section class="section archive" id="cartas" data-route hidden><div class="wrap"><a class="route-return" href="#inicio"><span aria-hidden="true">‹</span> Volver al inicio</a><div class="section-head"><p class="label">Archivo de cartas</p><h2 class="route-heading" tabindex="-1">Todo lo que te escribiría</h2><p>Palabras para guardar y volver a leer cuando quieras.</p></div>
+<div class="filters"><input id="search" type="search" placeholder="Buscar una carta…" aria-label="Buscar una carta"><select id="filter" aria-label="Filtrar por tema"><option value="">Todos los temas</option></select></div>
+<div class="letters" id="letters"></div><p class="empty" id="empty" role="status" hidden>No encontré cartas con esa búsqueda.</p>
+</div></section>
+<section class="section memory" id="momentos" data-route hidden><div class="wrap">
+<a class="route-return" href="#inicio"><span aria-hidden="true">‹</span> Volver al inicio</a>
+<div class="section-head"><p class="label">Nuestro archivo</p><h2 class="route-heading" tabindex="-1">Momentos</h2><p>Una canción para volver a cada recuerdo.</p></div>
+<article class="chapter memory-chapter"><div class="chapter-art" aria-hidden="true">31.10</div><div class="chapter-copy"><p class="label"><time datetime="2026-10-31">31 de octubre de 2026</time></p><h3>La noche de AKRIILA</h3><p>El concierto al que fuimos juntos. Guarda aquí la canción que te devuelve a esa noche.</p><a class="btn primary" href="https://orbita-sv-aniversario.wiseghost130.chatgpt.site/#momentos">Dedicarle una canción</a></div></article>
+<div class="memory-form"><h3>Guardar una canción</h3><p><a class="btn" href="https://orbita-sv-aniversario.wiseghost130.chatgpt.site/#momentos">Abrir nuestros recuerdos privados</a></p></div>
+</div></section>
+<section class="section" id="nueve-meses" data-route hidden><div class="wrap"><a class="route-return" href="#inicio"><span aria-hidden="true">‹</span> Volver al inicio</a><div class="section-head"><p class="label">Nuestro archivo</p><h2 class="route-heading" tabindex="-1">El capítulo de los 9 meses</h2></div><figure class="alvaro-video" aria-labelledby="alvaro-video-title">
+  <figcaption><p class="label">Para volver a ese momento</p><h3 id="alvaro-video-title">Un recuerdo de los dos</h3></figcaption>
+  <div class="video-stage"><video controls playsinline preload="metadata" poster="recuerdo-alvaro.jpg" aria-label="Video del recuerdo de los nueve meses">
+    <source src="recuerdo-alvaro.mp4" type="video/mp4">
+    <a href="recuerdo-alvaro.mp4">Abrir el video</a>
+  </video></div>
+</figure><article class="chapter"><div class="chapter-art" aria-hidden="true">09</div><div class="chapter-copy"><p class="label">La etapa de Álvaro Díaz</p><h3>Antes de esta órbita</h3><p>Cuando cumplimos nueve meses, esta historia tuvo su propia página, inspirada en Álvaro Díaz. Aquí tiene un lugar para volver a visitarla.</p>
+<!-- WEB DE ÁLVARO DÍAZ: configura paginaAnterior al inicio del script. Se habilitarán el visor y el enlace directo. -->
+<p id="chapter-pending">Pendiente de conectar la página original.</p><div class="actions" id="chapter-actions" hidden><button class="btn" id="toggle-preview" aria-expanded="false" aria-controls="chapter-preview">Mostrar la página</button><a class="btn primary" id="open-chapter" target="_blank" rel="noopener noreferrer">Abrir en otra pestaña</a><a class="btn" id="jump-alvaro-photos" href="#nueve-meses">Ir al álbum de fotos</a></div></div></article>
+<iframe class="preview" id="chapter-preview" title="Página del aniversario de nueve meses" referrerpolicy="no-referrer" hidden></iframe>
+<div class="memory-form" id="alvaro-album" tabindex="-1"><h3>Fotos de los nueve meses</h3><p><a class="btn" href="https://orbita-sv-aniversario.wiseghost130.chatgpt.site/#nueve-meses">Abrir el álbum privado</a></p></div>
+</div></section>
+</main>
+<footer><strong>Samuel &amp; Valentina</strong>Por todo lo que viene. ♡</footer>
+<dialog id="reader" aria-labelledby="reader-title"><div class="reader-head"><form method="dialog"><button class="btn" autofocus>Cerrar carta</button></form></div><article class="reader"><p class="label" id="reader-tag"></p><h2 id="reader-title"></h2><p class="body-letter" id="reader-text"></p></article></dialog>
+<script>
+"use strict";
+// EDITA AQUÍ. Usa ISO con zona horaria. Ejemplo de formato: 2025-11-26T20:00:00-05:00.
+const fechaInicio = "";
+// WEB DE ÁLVARO DÍAZ: pega la URL completa o usa "./9-meses/index.html".
+const paginaAnterior = "https://raw.githack.com/TorresSamuel/proyecto-aniversario/088afdf/views/index.html";
+// GALERÍA: rellena src con una ruta o URL y ajusta alt. Duplica una fila para añadir fotos.
+const fotos = [
+  {src:"", alt:"Foto de las entradas", nombre:"Foto de las boletas"},
+  {src:"", alt:"Samuel y Valentina en el concierto", nombre:"Foto de esa noche"}
+];
+// MÚSICA: pon tus canciones y dedicatorias reales. Opcional: añade url con el enlace directo a la canción.
+const canciones = [
+  {titulo:"MUBI", artista:"NSQK y Álvaro Díaz", url:"https://open.spotify.com/track/2FUypqXCtt1VRm7ytyCae4", nota:"Para cuando quieras que el resto del mundo se quede en pausa."},
+  {titulo:"Si En Tu Mente Estuve", url:"https://open.spotify.com/track/6EjBcoyPVn99cpRfoDiuRf", nota:"Para escucharnos desde lejos."},
+  {titulo:"LOVELANGUAGE", url:"https://open.spotify.com/track/5SuMst3sQt8wf94iGoXXLw", nota:"Para todas las maneras que tenemos de decirnos te quiero."},
+  {titulo:"YOKO", artista:"Álvaro Díaz", url:"https://open.spotify.com/track/63kj1GJsbRXhUcFM5JUf9L", nota:"Para cuando quiero tenerte cerquita."},
+  {titulo:"Reina Pepiada", artista:"Álvaro Díaz", url:"https://open.spotify.com/track/448IaiMb1Sxq6GptlBcbov", nota:"Una para dedicarte sin pensarlo dos veces."},
+  {titulo:"TE VI EN MIS PESADILLAS", artista:"Álvaro Díaz", url:"https://open.spotify.com/track/3vfq1ovR6oBGJPvoy4Oy1B", nota:"Para esas noches en que sigues en mi cabeza."},
+  {titulo:"Noche de los Dos", artista:"Murder", url:"https://open.spotify.com/track/1MKsphr9WmAkAGameksHDu", nota:"Para una noche de los dos."}
+];
+// CARTAS: los textos son borradores editables. Duplica un objeto para agregar otra carta.
+// Usa líneas en blanco entre párrafos. Solo la carta principal lleva portada: true.
+const cartas = [
+  // CARTA PRINCIPAL: escribe aquí tu carta de primer aniversario.
+  {titulo:"Mi primer año contigo", tema:"Aniversario", portada:true, resumen:"Una carta para ti, Valentina.", texto:`Valentina:
+
+Hoy quiero detenerme un rato a pensar en lo que significa haber compartido este año contigo. Si tuviera que guardar algo de estos meses, guardaría también las partes más sencillas: la alegría de saber de ti, el cariño que cabe en un mensaje y las ganas de seguir hablando cuando ya toca despedirse.
+
+Me gusta que todavía haya tanto por conocer de ti. Quiero seguir descubriendo qué cosas te hacen reír, qué música quieres poner primero y qué planes te gustaría que hiciéramos, incluso los que todavía parecen lejanos.
+
+Gracias por compartir conmigo este primer año. Me hace feliz poder decir que es nuestro. Ojalá sigamos encontrando tiempo para celebrar, pero también para contarnos cómo nos fue y hacerle espacio al otro en cualquier día.
+
+Feliz aniversario, amor.
+
+Samuel`},
+  // CARTA PARA CUANDO EXTRAÑES: reemplaza el texto y conserva los saltos de párrafo.
+  {titulo:"Para cuando extrañes", tema:"A la distancia", resumen:"Léeme cuando quieras sentirme cerquita.", texto:`Vale, si hoy me extrañas, imagina que me siento a tu lado y te pregunto cómo te fue. Me puedes contar todo con calma. Hasta que pueda escucharte de verdad, te dejo estas palabras aquí para hacerte compañía.
+
+Te quiero. Y ya tengo ganas de verte.`},
+  // CARTA LO QUE AMO DE TI: añade aquí tus detalles favoritos de Valentina.
+  {titulo:"Lo que amo de ti", tema:"Nosotros", resumen:"Las cosas que me dan ganas de quedarme un ratito más.", texto:`Amo escucharte hablar de algo que te emociona. En esos momentos me gusta hacerte otra pregunta solo para seguir oyéndote.
+
+Quiero seguir aprendiendo a quererte en los días en que todo sale bien y también en los que lo único que necesitas es descansar.`},
+  // CARTA NUESTROS PLANES: añade planes reales o pequeños deseos.
+  {titulo:"Nuestros planes", tema:"Por venir", resumen:"Un espacio para todas las fechas que aún no tienen día.", texto:`Me ilusiona ir a ver a NSQK contigo. También quiero que sigamos haciendo esos planes pequeños que podemos decidir el mismo día: salir a caminar, comer algo rico o quedarnos hablando un rato.
+
+Todavía hay muchos días por llenar. Qué rico poder imaginarlos contigo.`},
+  // CARTA DÍAS TRANQUILOS: añade aquí un recuerdo o una dedicatoria.
+  {titulo:"Días tranquilos", tema:"Nosotros", resumen:"Una carta para leer despacio.", texto:`Hay días en los que me basta estar contigo. Podemos poner música bajito, repetir una canción por tercera vez y dejar que pase la tarde.
+
+Espero que tengamos muchos días así, con tiempo para mirarnos y poquito afán por lo demás.`}
+];
+const byId = id => document.getElementById(id);
+function element(tag, text, className) {
+  const node = document.createElement(tag);
+  node.textContent = text;
+  if (className) node.className = className;
+  return node;
+}
+const inicio = Date.parse(fechaInicio);
+if (Number.isFinite(inicio)) {
+  const clock = byId("clock");
+  const update = () => {
+    const minutos = Math.floor(Math.max(0, Date.now() - inicio) / 60000);
+    clock.replaceChildren(...[[Math.floor(minutos / 1440),"días"],[Math.floor(minutos / 60) % 24,"h"],[minutos % 60,"min"]].map(([n, unit]) => {
+      const item = element("span","");
+      item.append(element("strong",String(n)), " " + unit);
+      return item;
+    }));
+  };
+  update();
+  setInterval(update,1000);
+}
+const trackButtons = canciones.map((cancion, index) => {
+  const button = element("button","","track");
+  button.type = "button";
+  const icon = element("span","♪");
+  icon.setAttribute("aria-hidden","true");
+  const copy = element("span",cancion.titulo);
+  copy.append(element("small",cancion.artista || "NSQK"));
+  button.append(icon,copy);
+  button.addEventListener("click",() => {
+    selectTrack(index);
+    if (matchMedia("(max-width: 760px)").matches) byId("spotify-player").scrollIntoView({block:"center",behavior:"instant"});
+  });
+  byId("tracks").append(button);
+  return button;
+});
+let activeSong = canciones[0];
+function spotifyId(value) {
+  try {
+    const url = new URL(value);
+    if (url.origin !== "https://open.spotify.com") return null;
+    return url.pathname.match(/^\/(?:intl-[a-z-]+\/)?track\/([A-Za-z0-9]{22})\/?$/i)?.[1] || null;
+  } catch { return null; }
+}
+function renderPlayer() {
+  const frame = byId("spotify-player");
+  const id = spotifyId(activeSong.url);
+  const open = !byId("musica").hidden && !!id;
+  frame.hidden = !open;
+  byId("play-hint").hidden = !open;
+  if (!open) {
+    frame.removeAttribute("src");
+    return;
+  }
+  const source = "https://open.spotify.com/embed/track/" + id;
+  if (frame.getAttribute("src") !== source) frame.src = source;
+  frame.title = "Reproducir " + activeSong.titulo + " en Spotify";
+}
+function selectTrack(index) {
+  const song = typeof index === "number" ? canciones[index] : index;
+  activeSong = song;
+  byId("track-title").textContent = song.titulo;
+  byId("track-note").textContent = song.nota;
+  const link = byId("track-link");
+  link.href = song.url || "https://open.spotify.com/search/" + encodeURIComponent("NSQK " + song.titulo);
+  link.textContent = song.url ? "Abrir en Spotify" : "Buscar en Spotify";
+  renderPlayer();
+  trackButtons.forEach((button,i) => button.setAttribute("aria-pressed",String(i === index)));
+}
+selectTrack(0);
+const shine = byId("shine");
+shine.addEventListener("click",() => {
+  const active = byId("ticket").classList.toggle("glow");
+  shine.setAttribute("aria-pressed",String(active));
+  shine.textContent = active ? "Atenuar pase" : "Iluminar pase";
+});
+for (const foto of fotos) {
+  const card = element(foto.src ? "a" : "div","","photo");
+  if (foto.src) {
+    card.href = foto.src;
+    card.target = "_blank";
+    card.rel = "noopener noreferrer";
+    const image = document.createElement("img");
+    image.src = foto.src;
+    image.alt = foto.alt;
+    image.loading = "lazy";
+    card.append(image);
+  } else {
+    card.append(element("span","＋  " + foto.nombre));
+  }
+  byId("gallery").append(card);
+}
+function setChapterPreview(open) {
+  if (!paginaAnterior.trim()) return;
+  const preview = byId("chapter-preview");
+  const toggle = byId("toggle-preview");
+  preview.hidden = !open;
+  if (open && !preview.hasAttribute("src")) preview.src = paginaAnterior;
+  toggle.textContent = open ? "Ocultar la página" : "Mostrar la página";
+  toggle.setAttribute("aria-expanded",String(open));
+}
+if (paginaAnterior.trim()) {
+  byId("chapter-pending").hidden = true;
+  byId("chapter-actions").hidden = false;
+  byId("open-chapter").href = paginaAnterior;
+  const preview = byId("chapter-preview");
+  const toggle = byId("toggle-preview");
+  toggle.addEventListener("click",() => setChapterPreview(preview.hidden));
+  byId("jump-alvaro-photos").addEventListener("click",event => {
+    event.preventDefault();
+    byId("alvaro-album").focus({preventScroll:true});
+    byId("alvaro-album").scrollIntoView({block:"start"});
+  });
+}
+const reader = byId("reader");
+const filter = byId("filter");
+const search = byId("search");
+for (const tema of new Set(cartas.map(carta => carta.tema))) {
+  filter.add(new Option(tema,tema));
+}
+const normalize = value => value.normalize("NFD").replace(/\p{Diacritic}/gu,"").toLowerCase();
+function renderLetters() {
+  const query = normalize(search.value.trim());
+  const matches = cartas.filter(carta => (!filter.value || carta.tema === filter.value) &&
+    normalize([carta.titulo,carta.tema,carta.resumen,carta.texto].join(" ")).includes(query));
+  byId("letters").replaceChildren(...matches.map(carta => {
+    const button = element("button","",carta.portada ? "letter feature" : "letter");
+    button.type = "button";
+    button.setAttribute("aria-haspopup","dialog");
+    button.append(element("p",carta.tema,"label"),element("h3",carta.titulo),element("p",carta.resumen));
+    button.addEventListener("click",() => {
+      byId("reader-tag").textContent = carta.tema;
+      byId("reader-title").textContent = carta.titulo;
+      byId("reader-text").textContent = carta.texto;
+      reader.showModal();
+      reader.scrollTop = 0;
+    });
+    return button;
+  }));
+  byId("empty").hidden = matches.length !== 0;
+}
+search.addEventListener("input",renderLetters);
+filter.addEventListener("change",renderLetters);
+reader.addEventListener("click",event => {
+  if (event.target !== reader) return;
+  const rect = reader.getBoundingClientRect();
+  if (event.clientX < rect.left || event.clientX > rect.right ||
+      event.clientY < rect.top || event.clientY > rect.bottom) reader.close();
+});
+renderLetters();
+
+// Arte original de la portada, dibujado en canvas.
+const canvas = byId("heart");
+const ctx = canvas.getContext("2d");
+const motion = matchMedia("(prefers-reduced-motion: reduce)");
+let seed = 629;
+function random() {
+  seed = (1664525 * seed + 1013904223) >>> 0;
+  return seed / 4294967296;
+}
+const stars = Array.from({length:145},() => [random(),random(),random()]);
+const grains = Array.from({length:3900},() => [random() * 2 * Math.PI,random(),random(),random()]);
+let animation;
+function draw(time = 0) {
+  const box = canvas.getBoundingClientRect();
+  const width = box.width;
+  const height = box.height;
+  if (!width || !height) return;
+  const ratio = Math.min(2,devicePixelRatio);
+  if (canvas.width !== Math.round(width * ratio) || canvas.height !== Math.round(height * ratio)) {
+    canvas.width = Math.round(width * ratio);
+    canvas.height = Math.round(height * ratio);
+  }
+  ctx.setTransform(ratio,0,0,ratio,0,0);
+  ctx.clearRect(0,0,width,height);
+  const size = Math.min(width,height);
+  const cx = width * .5;
+  const cy = height * .47;
+  const pulse = motion.matches ? 1 : 1 + Math.sin(time / 1450) * .024;
+  const glow = ctx.createRadialGradient(cx,cy,0,cx,cy,size*.49);
+  glow.addColorStop(0,"#9b4deb70");
+  glow.addColorStop(.55,"#6434ef39");
+  glow.addColorStop(1,"#5836ee00");
+  ctx.fillStyle = glow;
+  ctx.fillRect(0,0,width,height);
+  for (const [x,y,power] of stars) {
+    ctx.fillStyle = "rgba(222,205,255," + (.15 + power * .58) + ")";
+    ctx.fillRect(x * width,y * height,1 + power,1 + power);
+  }
+  ctx.save();
+  ctx.translate(cx,cy);
+  ctx.rotate(-.13);
+  const scale = size * .0184 * pulse;
+  for (const [t,r,b,spread] of grains) {
+    const edge = .24 + .76 * Math.pow(r,.43);
+    const x = 16 * Math.sin(t) ** 3;
+    const y = -(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t));
+    const hue = 263 + 45 * Math.sin(t) + 24 * b;
+    const light = 48 + 44 * r + 6 * b;
+    ctx.fillStyle = "hsla(" + hue + ",94%," + light + "%," + (.15 + b * .78) + ")";
+    ctx.fillRect(x*scale*edge + (spread-.5)*size*.044,y*scale*edge, .55 + b*2.3,.55 + b*2.3);
+  }
+  ctx.restore();
+  if (!motion.matches) animation = requestAnimationFrame(draw);
+}
+function restart() {
+  cancelAnimationFrame(animation);
+  draw();
+}
+motion.addEventListener("change",restart);
+window.addEventListener("resize",restart);
+
+
+const routes = new Map([...document.querySelectorAll("[data-route]")].map(section => [section.id,section]));
+function showRoute(moveFocus = false) {
+  const requested = location.hash.slice(1);
+  const current = routes.has(requested) ? requested : "inicio";
+  const active = routes.get(current);
+  for (const [id,section] of routes) section.hidden = id !== current;
+  for (const link of document.querySelectorAll(".nav a")) {
+    if (link.getAttribute("href") === "#" + current) link.setAttribute("aria-current","page");
+    else link.removeAttribute("aria-current");
+  }
+  const heading = active.querySelector("h1,h2");
+  document.title = current === "inicio" ? "Nuestra órbita · Samuel y Valentina" : heading.textContent + " · Nuestra órbita";
+  if (moveFocus) heading.focus({preventScroll:true});
+  window.scrollTo({top:0,behavior:"instant"});
+  renderPlayer();
+  if (current !== "nueve-meses") document.querySelector(".alvaro-video video").pause();
+  if (current === "nueve-meses") {
+    setChapterPreview(true);
+  }
+  if (current === "inicio") restart();
+  else cancelAnimationFrame(animation);
+}
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+window.addEventListener("hashchange",() => showRoute(true));
+document.querySelector(".nav").addEventListener("click",event => {
+  const link = event.target.closest("a[aria-current=page]");
+  if (!link || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+  event.preventDefault();
+  showRoute(true);
+});
+showRoute();
+</script>
+</body>
+</html>
